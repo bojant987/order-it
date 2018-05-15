@@ -1,0 +1,15 @@
+@import '../base/variables';
+
+.Logo {
+  background-color: $dark;
+  color: $light;
+}
+
+.Logo__inner {
+  display: inline-block;
+  background: url('../../img/logo-white.svg') 0 center no-repeat;
+  background-size: 50px;
+  padding: 20px 70px;
+  font-family: 'Lobster', cursive;
+  font-size: 32px;
+}
