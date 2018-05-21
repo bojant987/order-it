@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { activateAccount } from "../../Redux/actions/auth/activateAccount";
 
-class _ActivateAccount extends React.Component {
+export class _ActivateAccount extends React.Component {
     static propTypes = {
         activateAccount: PropTypes.func,
         location: PropTypes.object,

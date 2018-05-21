@@ -17,14 +17,16 @@ class _Login extends React.Component {
         location: PropTypes.object,
     };
 
+    componentDidMount() {
+        this.accountActivated = this.props.location.search.split('=')[0] === '?accActivated'
+            && !!this.props.location.search.split('=')[1];
+    }
+
     redirectToHome = () => {
         this.props.history.replace('/');
     };
 
     render() {
-        const accountActivated = this.props.location.search.split('=')[0] === '?accActivated'
-            && !!this.props.location.search.split('=')[1];
-
         return (
             <UserForm
                 handleSubmit={this.props.login.bind(null, this.redirectToHome)}
@@ -32,7 +34,7 @@ class _Login extends React.Component {
                 formError={this.props.errorMessage}
                 clearFormStatus={this.props.clearFormStatus}
                 isLoading={this.props.isLoading}
-                accountActivated={accountActivated}
+                accountActivated={this.accountActivated}
             />
         );
     }

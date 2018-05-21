@@ -18,7 +18,7 @@ export default class SimpleInput extends React.Component {
         onChange: PropTypes.func,
         type: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        placeholder: PropTypes.string.isRequired,
+        placeholder: PropTypes.string,
         validation: PropTypes.func,
         onFocus: PropTypes.func,
         errorMessage: PropTypes.string,

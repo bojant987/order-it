@@ -44,13 +44,13 @@ export default class SimpleForm extends React.Component {
                 success
                 {...rest}
             >
-                {children.map((child, index) => {
+                {children.map(child => {
                     if (!child.type) {
                         return child;
                     }
 
                     return child.type.name === 'SimpleInput'
-                        ? { ...child, ref: el => { this.fields[index] = el; } }
+                        ? { ...child, ref: el => { this.fields.push(el) } }
                         : child;
                 })}
                 {!!formError

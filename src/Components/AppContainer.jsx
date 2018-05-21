@@ -9,7 +9,7 @@ import AppFooter from './Footer';
 
 const Aux = props => props.children;
 
-class _AppContainer extends React.Component {
+export class _AppContainer extends React.Component {
     static propTypes = {
         Component: PropTypes.any,
         user: PropTypes.object,
@@ -35,9 +35,13 @@ class _AppContainer extends React.Component {
     };
 
     withLoginRedirect = Component => {
-        const { isLoggedIn } = this.props;
+        const { isLoggedIn, requiresLogin } = this.props;
 
-        return isLoggedIn ? <Component /> : <Redirect to="/login" />;
+        if (requiresLogin) {
+            return isLoggedIn ? <Component /> : <Redirect to="/login" />;
+        }
+
+        return <Component />;
     };
 
     // withAdminAccess = (Component, user) => {

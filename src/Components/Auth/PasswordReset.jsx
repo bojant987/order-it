@@ -11,7 +11,7 @@ import SimpleInput from '../Shared/Input';
 import SimpleForm from '../Shared/Form';
 import validators from '../../Util/validators';
 
-class _ResetPassword extends React.Component {
+export class _ResetPassword extends React.Component {
     constructor(props) {
         super(props);
 
@@ -72,7 +72,7 @@ class _ResetPassword extends React.Component {
                     />
 
                     {!!successMessage
-                    && <div className="h-textRight h-marginT--lg">
+                    && <div className="PasswordReset__loginLink h-textRight h-marginT--lg">
                         <Link to="/login">Go to login</Link>
                     </div>}
 

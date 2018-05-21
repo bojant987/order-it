@@ -1,9 +1,15 @@
 import { actionTypes } from '../constants/actionTypes';
 
+let isLoggedIn;
+
+try {
+    isLoggedIn = !!localStorage.getItem('token');
+} catch(e) {}
+
 const initialState = {
     errorMessage: null,
     isLoading: false,
-    isLoggedIn: false,
+    isLoggedIn,
 };
 
 export default function loginStatus(state = initialState, action) {
