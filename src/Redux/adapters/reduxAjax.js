@@ -1,7 +1,28 @@
 import axios from 'axios';
 
-export default function reduxAjax({ requestAction, successAction, errorAction, method = 'GET', params, url, auth=true, axiosArgs = {} }) {
+export default function reduxAjax({ getData, actionTypePrefix='', requestAction, successAction, errorAction, method = 'GET', params, url, auth=true, axiosArgs = {} }) {
     const token = localStorage.getItem('token');
+
+    const actionTypes = {
+        request: `REQUEST_${actionTypePrefix}`,
+        success: `RECEIVED_${actionTypePrefix}`,
+        error: `ERROR_${actionTypePrefix}`,
+    };
+    const actionHandlers = {
+        request: params => ({
+            type: actionTypes.request,
+            params,
+        }),
+        success: data => ({
+            type: actionTypes.success,
+            data,
+        }),
+        error: error => ({
+            type: actionTypes.error,
+            error,
+        }),
+    };
+
 
     if (auth) {
         axiosArgs.headers['x-auth'] = token;
@@ -14,24 +35,26 @@ export default function reduxAjax({ requestAction, successAction, errorAction, m
     }
 
     return dispatch => {
-        if (requestAction) {
-            dispatch(requestAction(axiosArgs.params));
-        }
+        const requestAC = actionHandlers.request || requestAction;
+        const successAC = actionHandlers.success || successAction;
+        const errorAC = actionHandlers.error || errorAction;
+
+        dispatch(requestAC(axiosArgs.params));
 
         return axios({
             ...axiosArgs,
             url,
             method,
         }).then(resp => {
-            if (successAction) {
-                dispatch(successAction(resp.data));
+            if (getData) {
+                dispatch(successAC(getData(resp.data)));
+            } else {
+                dispatch(successAC(resp.data));
             }
 
             return resp.data;
         }).catch(error => {
-            if (errorAction) {
-                dispatch(errorAction(error.response.data));
-            }
+            dispatch(errorAC(error.response.data));
         });
     }
 }
