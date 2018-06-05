@@ -1,0 +1,21 @@
+{
+  "core": {
+    "workingDir": "__screenshots__report__",
+    "actualDir": "__screenshots__",
+    "threshold": 0,
+    "addIgnore": true,
+    "thresholdRate": 0,
+    "ximgdiff": {
+      "invocationType": "client"
+    }
+  },
+  "plugins": {
+    "reg-keygen-git-hash-plugin": true,
+    "reg-notify-github-plugin": {
+      "clientId": "MzQ2NjU3NTI11c8vSkkt0s0s0TcyMLSwMNBPys9KzCuxtDAHAA=="
+    },
+    "reg-publish-s3-plugin": {
+      "bucketName": "your_s3_bucket_name"
+    }
+  }
+}
