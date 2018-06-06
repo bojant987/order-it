@@ -1,10 +1,11 @@
 @import '../base/variables';
 
 .LoginPage {
-  background: url('../../img/food3.jpg') center center no-repeat;
-  background-size: cover;
+	background: url('../../img/food3.jpg') center center no-repeat;
+	background-size: cover;
 }
 
 .Login {
-  background-color: rgba($secondary, 0.94);
+	//background-color: rgba($secondary, 0.94);
+	background-color: red;
 }
