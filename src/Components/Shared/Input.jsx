@@ -22,6 +22,7 @@ export default class SimpleInput extends React.Component {
         validation: PropTypes.func,
         onFocus: PropTypes.func,
         errorMessage: PropTypes.string,
+        input: PropTypes.bool,
     };
 
     static defaultProps = {
@@ -71,6 +72,7 @@ export default class SimpleInput extends React.Component {
             onChange,
             onFocus,
             validation,
+            input,
             ...rest
         } = this.props;
 

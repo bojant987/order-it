@@ -90,6 +90,7 @@ export default class UserForm extends React.Component {
                     </h2>
 
                     <SimpleInput
+                        input
                         type="text"
                         placeholder="Email"
                         name="email"
@@ -98,6 +99,7 @@ export default class UserForm extends React.Component {
                     />
 
                     <SimpleInput
+                        input
                         type="password"
                         placeholder="Password"
                         name="password"

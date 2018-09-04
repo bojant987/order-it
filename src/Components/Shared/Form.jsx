@@ -45,11 +45,7 @@ export default class SimpleForm extends React.Component {
                 {...rest}
             >
                 {children.map(child => {
-                    if (!child.type) {
-                        return child;
-                    }
-
-                    return child.type.name === 'SimpleInput'
+                    return child.props.input
                         ? { ...child, ref: el => { this.fields.push(el) } }
                         : child;
                 })}
