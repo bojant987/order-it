@@ -49,7 +49,7 @@ export default class SimpleForm extends React.Component {
                         return child;
                     }
 
-                    return child.type.name === 'SimpleInput'
+                    return child.props.input
                         ? { ...child, ref: el => { this.fields.push(el) } }
                         : child;
                 })}
